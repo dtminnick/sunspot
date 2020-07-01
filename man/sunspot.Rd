@@ -5,7 +5,7 @@
 \alias{sunspot}
 \title{Sunspot Dataset}
 \format{
-A data frame with ... observations and 16 variables.
+A data frame with 246,266 observations and 16 variables.
 }
 \usage{
 data(sunspot)
@@ -29,23 +29,49 @@ Atmospheric Administration (NOAA) with much of the same information being
 compiled through to the present.
 
 The dataset includes the following variables:
+
 \describe{
-\item{\code{year}}{Character, ...}
-\item{\code{month}}{Character, ...}
-\item{\code{day}}{Character, ...}
-\item{\code{time}}{Character, ...}
-\item{\code{group}}{Character, ...}
-\item{\code{group_suffix}}{Character, ...}
-\item{\code{group_type}}{Character, ...}
-\item{\code{observed_umbral_area}}{Character, ...}
-\item{\code{observed_whole_spot_area}}{Character, ...}
-\item{\code{corrected_umbral_area}}{Character, ...}
-\item{\code{corrected_whole_spot_area}}{Character, ...}
-\item{\code{distance_from_center}}{Character, ...}
-\item{\code{position_angle}}{Character, ...}
-\item{\code{longitude}}{Character, ...}
-\item{\code{latitude}}{Character, ...}
-\item{\code{central_meridian_distance}}{Character, ...}
+\item{\code{year}}{Integer, four-digit year, ranging from 1874 through 2016.}
+
+\item{\code{month}}{Integer, two-digit month, ranging from 1 through 12.}
+
+\item{\code{day}}{Integer, two-digit day of month, ranging from 1 through 31.}
+
+\item{\code{time}}{Numeric, time of day in thousanths of a day (0.500 = 12:00 UT).}
+
+\item{\code{group}}{Integer, Greenwich group number through 1976, NOAA/USAF group
+    number after 1976.}
+
+\item{\code{group_suffix}}{Character, suffix to group number 1982 to present;
+    otherwise, equals '00'.}
+
+\item{\code{group_type}}{Character, Greenwich group type through 1981;
+    NOAA group type 1982 to present (A = Alpha, B = Beta, D = Delta, G = Gamma).}
+
+\item{\code{observed_umbral_area}}{Integer, observed umbral area in millionths of
+    solar disk, 1874 through 1976.}
+
+\item{\code{observed_whole_spot_area}}{Integer, observed whole spot area in millionths
+    of solar disk, 1874 through 1976.}
+
+\item{\code{corrected_umbral_area}}{Integer, corrected (for foreshortening) umbral
+    area in millionths of solar hemisphere, 1874 through 1976.}
+
+\item{\code{corrected_whole_spot_area}}{Integer, corrected whole spot area in millionths
+    of solar hemisphere.}
+
+\item{\code{distance_from_center}}{Numeric, distance from center of solar disk in disk
+    radii.}
+
+\item{\code{position_angle}}{Integer, position angle from heliographic north (0 = North,
+    90 = East Limb).}
+
+\item{\code{longitude}}{Character, Carrington longitude in degrees,}
+
+\item{\code{latitude}}{Character, latitude, negative to the South.}
+
+\item{\code{central_meridian_distance}}{Character, central meridian distance, negative
+    to the East.}
 }
 }
 \references{
