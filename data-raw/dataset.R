@@ -79,10 +79,6 @@ colnames(source) <- c("year",
                       "latitude",
                       "central_meridian_distance")
 
-# Clean and format data frame.
-
-
-
 # Apply data frame name.
 
 sunspot <- source
