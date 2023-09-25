@@ -3,6 +3,7 @@
 
 library("dplyr")
 library("lubridate")
+library("stringr")
 library("tidyr")
 
 # Download source files from NASA Solar Physics website.
@@ -79,9 +80,34 @@ colnames(source) <- c("year",
                       "latitude",
                       "central_meridian_distance")
 
-# Apply data frame name.
-
-sunspot <- source
+sunspot <- source %>%
+      mutate(date = as.Date(paste(year,
+                                  "-",
+                                  str_pad(month, 2, "left", "0"),
+                                  "-",
+                                  str_pad(day, 2, "left", "0"),
+                                  sep = "")),
+             month_name = month(date, label = TRUE),
+             day_name = wday(date, label = TRUE)) %>%
+      select(date,
+             year,
+             month,
+             month_name,
+             day,
+             day_name,
+             time,
+             group,
+             group_suffix,
+             group_type,
+             observed_umbral_area,
+             observed_whole_spot_area,
+             corrected_umbral_area,
+             corrected_whole_spot_area,
+             distance_from_center,
+             position_angle,
+             longitude,
+             latitude,
+             central_meridian_distance)
 
 # Save data frame.
 
