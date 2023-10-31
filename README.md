@@ -47,6 +47,11 @@ files downloaded from the NASA website.
 
 ## Results
 
+The consolidated `sunspot` dataset is useful in time series analysis and prediction.  
+In particular, it can be used to illustrate the Sun's 11-year sunspot cycle.  Often 
+referred to as the solar cycle, it is not precisely 11 years, but it has an average 
+periodicity of approximately 11 years.
+
 ## Future Steps
 
 ## Installation
