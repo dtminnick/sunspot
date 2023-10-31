@@ -60,10 +60,10 @@ periodicity of approximately 11 years.
 
 | Folder | Description |
 |--------|-------------|
-| data | ... |
-| data-raw | ... |
-| inst/extdata | ... |
-| man | ... |
-| R | ... |
+| data | Contains the consolidated file as an Rdata file. |
+| data-raw | Contains the R code file used to download and combine the source files. |
+| inst/extdata | Contains the 143 source text files, one per year. |
+| man | Contains a rendered Roxygen file describing the dataset. |
+| R | Contains the R data file documenting the dataset. |
 
 Other files in the project directory are related to the R package.
