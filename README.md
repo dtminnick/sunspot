@@ -57,3 +57,13 @@ periodicity of approximately 11 years.
 ## Installation
 
 ## Folder Structure
+
+| Folder | Description |
+|--------|-------------|
+| data | ... |
+| data-raw | ... |
+| inst/extdata | ... |
+| man | ... |
+| R | ... |
+
+Other files in the project directory are related to the R package.
