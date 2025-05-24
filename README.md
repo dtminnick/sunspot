@@ -1,69 +1,47 @@
 # sunspot
 
-## Introduction
+This project consolidates daily sunspot observation records from 143 annual ASCII files (1874–2016), originally published by NASA's Solar Physics division, into a single structured dataset for analysis and future time series modeling.
 
-This project provides, in a single dataset, sunspot data collected and published on NASA's Solar Physics website. The dataset is created from 143 ASCII text files containing records for individual years of sunspot observations for the years 1874 through 2016. Each file consists of records with information on individual sunspot groups for each day that spots were observed.
+# Dataset Overview
 
-## Dataset
+The final `sunspot` dataset contains **246,266 observations** across **19 variables**, each corresponding to individual sunspot group observations.
 
-The sunspot dataset contains 19 variables and 246,266 observations in the following structure:
+| Variable                  | Type      | Description                                                                                     |
+|---------------------------|-----------|-------------------------------------------------------------------------------------------------|
+| date                      | Date      | Observation date (YYYY-MM-DD)                                                                   |
+| year, month, day          | Integer   | Date components                                                                                 |
+| month_name, day_name      | Character | Month and weekday abbreviations                                                                 |
+| time                      | Numeric   | Observation time (fraction of a day, e.g. 0.500 = 12:00 UT)                                     |
+| group, group_suffix       | Mixed     | Sunspot group number and suffix (Greenwich/NOAA system)                                         |
+| group_type                | Character | Classification of sunspot group (A = Alpha, B = Beta, etc.)                                     |
+| observed_umbral_area      | Integer   | Umbral area in millionths of solar disk                                                         |
+| observed_whole_spot_area  | Integer   | Total spot area in millionths of solar disk                                                     |
+| corrected_umbral_area     | Integer   | Umbral area corrected for foreshortening                                                        |
+| corrected_whole_spot_area | Integer   | Corrected total spot area                                                                       |
+| distance_from_center      | Numeric   | Distance from center of solar disk (in radii)                                                   |
+| position_angle            | Integer   | Angle from heliographic north (0° = North, 90° = East Limb)                                     |
+| longitude, latitude       | Character | Carrington longitude; latitude (negative = South)                                               |
+| central_meridian_distance | Character | Distance from central meridian (negative = East)                                                |
 
-| Variable                  | Type      | Description                                                                                                     |
-|---------------------------|-----------|-----------------------------------------------------------------------------------------------------------------|
-| date                      | Date      | Date of observation in YYYY-MM-DD format.                                                                       |
-| year                      | Integer   | Four-digit year, ranging from 1874 through 2016.                                                                |
-| month                     | Integer   | Two-digit month, ranging from 01 through 12.                                                                    |
-| month_name                | Character | Three-position month name, e.g. Jan, Feb, Mar, etc.                                                             |
-| day                       | Integer   | Two-digit day of the month, ranging from 01 through 31.                                                         |
-| day_name                  | Character | Three-position day name, e.g. Mon, Tue, Wed, etc.                                                               |
-| time                      | Numeric   | Time of day in thousanths of a day (0.500 = 12:00 UT).                                                          |
-| group                     | Integer   | Greenwich group number through 1976, NOAA/USAF group number after 1976.                                         |
-| group_suffix              | Character | Suffix to group number 1982 to present; otherwise, equals '00'.                                                 |
-| group_type                | Character | Greenwich group type through 1981; NOAA group type 1982 to present (A = Alpha, B = Beta, D = Delta, G = Gamma). |
-| observed_umbral_area      | Integer   | Observed umbral area in millionths of solar disk, 1874 through 1976.                                            |
-| observed_whole_spot_area  | Integer   | Observed whole spot area in millionths of solar disk, 1874 through 1976.                                        |
-| corrected_umbral_area     | Integer   | Umbral area corrected for foreshortening in millionths of solar hemisphere, 1874 through 1976.                  |
-| corrected_whole_spot_area | Integer   | Corrected whole spot area in millionths of solar hemisphere.                                                    |
-| distance_from_center      | Numeric   | Distance from center of solar disk in disk radii.                                                               |
-| position_angle            | Integer   | Position angle from heliographic north (0 = North, 90 = East Limb).                                             |
-| longitude                 | Character | Carrington longitude in degrees.                                                                                |
-| latitude                  | Character | Latitude, negative to the South.                                                                                |
-| central_meridian_distance | Character | Central meridian distance, negative to the East.                                                                |
+# Data Processing
+To assemble the dataset, I used the following R libraries:
 
-## Data Analysis
+- `dplyr`, `tidyr` – for data wrangling and transformation
+- `lubridate` – for parsing and manipulating date fields
+- `stringr` – for handling text operations
+- `read.fwf` – for reading fixed-width text files
 
-I used four R libraries in this project:
+The dataset was created by iteratively processing 143 individual year files and merging them into a cohesive whole.
 
-1. `dplyr` and `tidyr` for data manipulation and transformation.
-2. `lubridate` for parsing and manipulating dates.
-3. `stringr` for text operations.
+# Intended Use: Time Series Analysis
+While this repository currently focuses on data consolidation and structuring, the next phase of this project will explore **time series analysis**, with an emphasis on visualizing and modeling the Sun’s ~11-year solar cycle. The dataset is well-suited for demonstrating trends in solar activity and conducting predictive modeling.
 
-In addition, I used the base R `read.fwf` function to read data from the fixed-width
-files downloaded from the NASA website.
+# Future Steps
+- Conduct exploratory time series visualizations
+- Apply decomposition techniques and spectral analysis
+- Model the solar cycle using ARIMA or Fourier-based methods
+- Explore correlation with geomagnetic and climate-related data
 
-## Data Preparation
+# Installation & Reproducibility
 
-
-
-## Results
-
-The consolidated `sunspot` dataset is useful in time series analysis and prediction.  
-In particular, it can be used to illustrate the Sun's 11-year sunspot cycle.  Often 
-referred to as the solar cycle, it is not precisely 11 years, but it has an average 
-periodicity of approximately 11 years.
-
-## Future Steps
-
-## Installation
-
-## Folder Structure
-
-| Folder | Description |
-|--------|-------------|
-| data | Contains the consolidated file as an Rdata file. |
-| data-raw | Contains the R code file used to download and combine the source files. |
-| inst/extdata | Contains the 143 source text files, one per year. |
-| man | Contains a rendered Roxygen file describing the dataset. |
-| R | Contains the R data file documenting the dataset. |
-
-Other files in the project directory are related to the R package.
+This project is structured as a minimal R package. To reproduce the dataset locally, clone the repo and run the scripts in `data-raw`. No large data dependencies are required beyond the included files.
